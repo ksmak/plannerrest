@@ -4,7 +4,6 @@ from . import views, services
 
 router = routers.DefaultRouter()
 router.register('task/', services.TaskViewSet, basename='Task')
-router.register('executor/', services.ExecutorViewSet, basename='Executor')
 
 urlpatterns = [
     path('', include(router.urls)),
