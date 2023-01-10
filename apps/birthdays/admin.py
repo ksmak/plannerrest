@@ -1,21 +1,19 @@
-
 # Python modules
 from typing import Any
 # Django modules
 from django.contrib import admin
 # Project modules
-from .models import Task
+from .models import BirthDay
 
 
-class TaskAdmin(admin.ModelAdmin):
-    model = Task
+class BirthDayAdmin(admin.ModelAdmin):
+    model = BirthDay
+
     list_display = (
-        'state',
-        'title',
-        'description',
-        'is_all_day',
-        'start_date',
-        'end_date'
+        'first_name',
+        'last_name',
+        'middle_name',
+        'birth_date'
     )
 
     readonly_fields = (
@@ -39,3 +37,7 @@ class TaskAdmin(admin.ModelAdmin):
             obj.create_user = request.user
 
         obj.save()
+
+
+
+admin.site.register(BirthDay, BirthDayAdmin)

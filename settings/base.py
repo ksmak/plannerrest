@@ -6,7 +6,7 @@ from pathlib import Path
 from settings.conf import *
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(BASE_DIR)
+sys.path.append(os.path.join(BASE_DIR))
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
 ALLOWED_HOSTS = ['*']
@@ -18,15 +18,16 @@ DJANGO_AND_THIRD_PARTY_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
 ]
 
 PROJECT_APPS = [
-    'auths',
-    'abstracts',
-    'tasks',
+    'auths.apps.AuthsConfig',
+    'abstracts.apps.AbstractsConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 INSTALLED_APPS = DJANGO_AND_THIRD_PARTY_APPS + PROJECT_APPS
@@ -98,4 +99,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL='auths.CustomUser'
+AUTH_USER_MODEL = 'auths.CustomUser'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

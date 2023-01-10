@@ -1,3 +1,4 @@
+# Third party modules
 from decouple import config
 import pygments.formatters
 
@@ -16,6 +17,14 @@ SHELL_PLUS_PRE_IMPORTS = [
     ('json', ('loads', 'dumps'))
 ]
 IPYTHON_KERNEL_DISPLAY_NAME = "Django Shell-Plus"
+SHELL_PLUS_MODEL_ALIASES = {
+    'tasks': {
+        'Task': 'T',
+        'RepeatOver': 'R',
+        'File': 'F',
+        'PerfomanceInfo': 'P'
+    }
+}
 
 # Debug toolbar
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
